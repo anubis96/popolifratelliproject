@@ -100,6 +100,17 @@ class IstmIndexController extends AbstractController
         ]);
     }
 
+    #[Route('/membres', name: 'members-app')]
+    public function members_index(MemberRepository $memberRepository): Response
+    {
+        $members = $memberRepository->findAll();
+
+        return $this->render('istm_index/books/teams_index.html.twig', [
+            'controller_name' => 'IstmIndexController',
+            'members' => $members
+        ]);
+    }
+
     #[Route('/filieres', name: 'domaines_admissions_app')]
     public function domainesadmissions_index(FiliereRepository $filiereRepository): Response
     {
